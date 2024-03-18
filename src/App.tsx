@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import StarRating from "./StarRating";
+import colorData from "./color_data.json";
+import ColorList from "./ColorList";
 
 function App() {
+	const [colors] = useState(colorData);
 	return (
 		<div className="App">
 			<header className="App-header">
@@ -20,7 +23,7 @@ function App() {
 					Learn React
 				</a> */}
 				<>
-					<StarRating totalStars={5} />
+					<ColorList colors={colors} />
 				</>
 			</header>
 		</div>
