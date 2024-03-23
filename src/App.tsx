@@ -4,6 +4,8 @@ import "./App.css";
 import StarRating from "./StarRating";
 import colorData from "./color_data.json";
 import ColorList from "./ColorList";
+import AddColorForm from "./form/addColorForm";
+import { v4 } from "uuid";
 
 function App() {
 	const [colors, setColors] = useState(colorData);
@@ -21,6 +23,20 @@ function App() {
 							const newColors = colors.map((color) =>
 								color.id === id ? { ...color, rating } : color,
 							);
+							setColors(newColors);
+						}}
+					/>
+					<AddColorForm
+						onNewColor={(title: string, color: string) => {
+							const newColors = [
+								...colors,
+								{
+									id: v4(),
+									title,
+									color,
+									rating: 0,
+								},
+							];
 							setColors(newColors);
 						}}
 					/>
